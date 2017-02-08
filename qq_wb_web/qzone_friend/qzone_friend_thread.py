@@ -7,7 +7,7 @@ from login.views import qzone_login
 from db.db_redis import redis_connect,pop_redis_list,push_redis_list_tmp
 from db.db_mysql import mysql_connect_qq,mysql_connect_local_qq,insert_mysql_qq,get_tuple
 
-import BeautifulSoup
+#import BeautifulSoup
 from bs4 import BeautifulSoup
 #加载异常处理
 from selenium.webdriver.common.by import By
