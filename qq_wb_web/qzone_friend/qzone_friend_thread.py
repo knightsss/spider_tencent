@@ -115,7 +115,7 @@ def loaddata(c_thread,thread_num,interval):
                 tmp_tuple = get_tuple(qq,friend_qq_list)
                 #插入mysql数据库
                 print "insert into table "
-                mysql_conn = mysql_connect_local_qq()
+                mysql_conn = mysql_connect_qq()
                 insert_mysql_qq(mysql_conn,tmp_tuple)
                 #关闭数据库
                 mysql_conn.close()
