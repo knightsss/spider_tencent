@@ -70,6 +70,7 @@ def loaddata(c_thread,thread_num,interval):
     if conn_redis == None  :
         print "redis connect error"
     else:
+        ip = get_ip()
         while not c_thread.thread_stop:
             print 'qzone_qq_friend Thread:(%s) Time:%s\n'%(thread_num,time.ctime())
             qq = pop_redis_list(conn_redis,redis_list_name_pop)
@@ -110,26 +111,30 @@ def loaddata(c_thread,thread_num,interval):
 
                 print friend_qq_list
                 #############################################存入mysql
-                print "insert mysql"
-                #获取qq和friend_qq组成的元组，多个
-                tmp_tuple = get_tuple(qq,friend_qq_list)
-                #插入mysql数据库
-                print "insert into table "
-                mysql_conn = mysql_connect_qq()
-                insert_mysql_qq(mysql_conn,tmp_tuple)
-                #关闭数据库
-                mysql_conn.close()
-
+                try:
+                    print "insert mysql"
+                    #获取qq和friend_qq组成的元组，多个
+                    tmp_tuple = get_tuple(qq,friend_qq_list)
+                    #插入mysql数据库
+                    print "insert into table "
+                    mysql_conn = mysql_connect_qq()
+                    insert_mysql_qq(mysql_conn,tmp_tuple)
+                    #关闭数据库
+                    mysql_conn.close()
+                except:
+                    rtx('ip',ip+ "机器QQ空间关系链采集mysql出错")
                 ############################################存入临时的redis
-                print "put mid redis"
-                push_redis_list_tmp(conn_redis,redis_list_name_push,qq)
-                print "put auditor mid redis"
-                for friend_qq in friend_qq_list:
-                    push_redis_list_tmp(conn_redis,redis_list_name_push,friend_qq)
+                try:
+                    print "put mid redis"
+                    push_redis_list_tmp(conn_redis,redis_list_name_push,qq)
+                    print "put auditor mid redis"
+                    for friend_qq in friend_qq_list:
+                        push_redis_list_tmp(conn_redis,redis_list_name_push,friend_qq)
+                except:
+                    rtx('ip',ip+ "机器QQ空间关系链采集redis入队出错")
         print thread_num,"quit phantomjs"
         driver.quit()
         #rtx提醒
-        ip = get_ip()
         rtx('ip',ip+ "机器" + thread_num +"停止运行")
         #数据库状态更新,根据线程名称
         print "更新数据库线程状态"

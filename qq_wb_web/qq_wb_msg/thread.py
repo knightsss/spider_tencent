@@ -6,6 +6,8 @@ import threading
 from qq_wb_msg.msg import qq_login, redis_connect, connect_mongodb,pop_redis_list, get_msg, load_mongodb
 
 from log.views import log_setting
+from log.rtx import rtx,get_ip
+from qq_wb_msg.models import ThreadMsg
 
 # from log.rtx import rtx
 
@@ -70,6 +72,7 @@ def loaddata(c_thread,thread_num,interval):
     if conn_redis == 0 or conn_mongo == 0:
         print "redis or mongodb connect error"
     else:
+        ip = get_ip()
         while not c_thread.thread_stop:
             print 'Thread:(%s) Time:%s\n'%(thread_num,time.ctime())
             log = log_setting()
@@ -85,27 +88,16 @@ def loaddata(c_thread,thread_num,interval):
                 try:
                     load_mongodb(conn_mongo,url,msg)
                 except:
-                    print "mongodb error "
+                    rtx('ip',ip+ "机器mongodb失败")
+                    print "mongodb error"
                     break
         # rtx('IP','正常停止')
         print thread_num,"quit phantomjs"
         driver.quit()
-            # time.sleep(interval)
-
-
-####################################测试部分
-# def test4():
-#     c  = ThreadControl()
-#     c.start('a',2)
-#     time.sleep(4)
-#     c.stop('a')
-#     time.sleep(5)
-#     c.start('a',2)
-#     time.sleep(5)
-#     c.stop('a')
-#     print "over"
-# if __name__ == '__main__':
-#     # test1()
-#     # time.sleep(30)
-#     test4()
-
+        #rtx提醒
+        rtx('ip',ip+ "机器" + thread_num +"停止运行")
+        #数据库状态更新,根据线程名称
+        print "更新数据库线程状态"
+        thread = ThreadMsg.objects.get(thread_name=thread_num)
+        thread.thread_status = 0
+        thread.save()

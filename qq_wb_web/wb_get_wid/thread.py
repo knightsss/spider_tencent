@@ -6,6 +6,9 @@ import threading
 from wb_get_wid.auditor import redis_connect,pop_redis_list,get_auditor_page_url_via_url,get_auditor_main_url,mysql_connect,get_tuple,insert_mysql,push_redis_list_tmp
 from qq_wb_msg.msg import qq_login
 
+from log.rtx import rtx,get_ip
+from wb_get_wid.models import Threadauditor
+
 class Spider(threading.Thread):
     # __metaclass__ = Singleton
     thread_stop = False
@@ -59,6 +62,7 @@ def loaddata(c_thread,thread_num,interval):
     if conn_redis == None  :
         print "redis connect error"
     else:
+        ip = get_ip()
         while not c_thread.thread_stop:
             print 'Thread:(%s) Time:%s\n'%(thread_num,time.ctime())
             mid = pop_redis_list(conn_redis)
@@ -87,21 +91,37 @@ def loaddata(c_thread,thread_num,interval):
                         continue
                     else:
                         #############################################存入mysql
-                        print "insert mysql"
-                        #获取mid和auditor_mid组成的元组，多个
-                        tmp_tuple = get_tuple(mid,mid_list)
-                        #插入mysql数据库
-                        print "insert into table "
-                        mysql_conn = mysql_connect()
-                        insert_mysql(mysql_conn,tmp_tuple)
-                        #关闭数据库
-                        mysql_conn.close()
+                        try:
+                            print "insert mysql"
+                            #获取mid和auditor_mid组成的元组，多个
+                            tmp_tuple = get_tuple(mid,mid_list)
+                            #插入mysql数据库
+                            print "insert into table "
+                            mysql_conn = mysql_connect()
+                            insert_mysql(mysql_conn,tmp_tuple)
+                            #关闭数据库
+                            mysql_conn.close()
+                        except:
+                            rtx('ip',ip+ "机器mysql出错")
+                            print "insert mysql error"
                         ############################################存入临时的redis
-                        print "put mid redis"
-                        push_redis_list_tmp(conn_redis,mid)
-                        print "put auditor mid redis"
-                        for auditor_mid in mid_list:
-                            push_redis_list_tmp(conn_redis,auditor_mid)
+                        try:
+                            print "put mid redis"
+                            push_redis_list_tmp(conn_redis,mid)
+                            print "put auditor mid redis"
+                            for auditor_mid in mid_list:
+                                push_redis_list_tmp(conn_redis,auditor_mid)
+                        except:
+                            rtx('ip',ip+ "机器redis出错")
+                            print "insert mysql error"
+
         print thread_num,"quit phantomjs"
         driver.quit()
+        #rtx提醒
+        rtx('ip',ip+ "机器" + thread_num +"停止运行")
+        #数据库状态更新,根据线程名称
+        print "更新数据库线程状态"
+        thread = Threadauditor.objects.get(thread_name=thread_num)
+        thread.thread_status = 0
+        thread.save()
         
