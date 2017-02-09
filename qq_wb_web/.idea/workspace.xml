@@ -54,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/wb_get_wid/thread.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="34" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
+              <caret line="88" column="43" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
               <folding>
                 <element signature="e#41#52#0" expanded="true" />
                 <marker date="1486621928096" expanded="true" signature="3210:3227" placeholder="insert into ..." />
@@ -63,13 +63,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auditor.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="auditor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wb_get_wid/auditor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="213" column="38" selection-start-line="213" selection-start-column="38" selection-end-line="213" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.5529753">
+              <caret line="158" column="65" selection-start-line="158" selection-start-column="65" selection-end-line="158" selection-end-column="65" />
               <folding>
-                <marker date="1486622789829" expanded="true" signature="7025:7091" placeholder="insert into ..." />
+                <marker date="1486625676580" expanded="true" signature="7031:7097" placeholder="insert into ..." />
               </folding>
             </state>
           </provider>
@@ -87,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="msg.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="msg.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/qq_wb_msg/msg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52539915">
-              <caret line="160" column="39" selection-start-line="160" selection-start-column="39" selection-end-line="160" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="159" column="5" selection-start-line="159" selection-start-column="5" selection-end-line="159" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -181,8 +181,8 @@
         <option value="$PROJECT_DIR$/wb_get_wid/thread.py" />
         <option value="$PROJECT_DIR$/qq_wb_msg/thread.py" />
         <option value="$PROJECT_DIR$/qzone_friend/qzone_friend_thread.py" />
-        <option value="$PROJECT_DIR$/wb_get_wid/auditor.py" />
         <option value="$PROJECT_DIR$/qq_wb_msg/msg.py" />
+        <option value="$PROJECT_DIR$/wb_get_wid/auditor.py" />
       </list>
     </option>
   </component>
@@ -690,7 +690,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1692" height="1026" extended-state="1" />
+    <frame x="-8" y="-8" width="1692" height="1026" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15196079" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1107,27 +1107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wb_get_wid/thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="34" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
-          <folding>
-            <element signature="e#41#52#0" expanded="true" />
-            <marker date="1486621928096" expanded="true" signature="3210:3227" placeholder="insert into ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wb_get_wid/auditor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="213" column="38" selection-start-line="213" selection-start-column="38" selection-end-line="213" selection-end-column="38" />
-          <folding>
-            <marker date="1486622789829" expanded="true" signature="7025:7091" placeholder="insert into ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/qq_wb_msg/thread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1140,9 +1119,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/qq_wb_msg/msg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52539915">
-          <caret line="160" column="39" selection-start-line="160" selection-start-column="39" selection-end-line="160" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="159" column="5" selection-start-line="159" selection-start-column="5" selection-end-line="159" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wb_get_wid/thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="43" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
+          <folding>
+            <element signature="e#41#52#0" expanded="true" />
+            <marker date="1486621928096" expanded="true" signature="3210:3227" placeholder="insert into ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wb_get_wid/auditor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5529753">
+          <caret line="158" column="65" selection-start-line="158" selection-start-column="65" selection-end-line="158" selection-end-column="65" />
+          <folding>
+            <marker date="1486625676580" expanded="true" signature="7031:7097" placeholder="insert into ..." />
+          </folding>
         </state>
       </provider>
     </entry>

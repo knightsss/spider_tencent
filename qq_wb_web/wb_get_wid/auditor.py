@@ -140,12 +140,12 @@ def get_auditor_main_url(driver, auditor_page_url_list):
     # print len(auditor_page_url_list)
     for auditor_page_url in auditor_page_url_list:
     # if 1:
-        print"auditor_page_url", auditor_page_url
+    #     print"auditor_page_url", auditor_page_url
         driver.get(auditor_page_url)
         #等待加载完成再访问,加载异常时退出，重新登录
         try:
             element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CLASS_NAME , "userName")))
-            print "find userName"
+            # print "find userName"
             print "driver.current_url",driver.current_url
             main_page = driver.page_source
             soup = BeautifulSoup(main_page)
@@ -155,7 +155,7 @@ def get_auditor_main_url(driver, auditor_page_url_list):
             for li in li_list:
                 # auditor_main_url_list.append()
                 try:
-                    print li.find('strong').find('a').get('href')
+                    # print li.find('strong').find('a').get('href')
                     mid_list.append(str(li.find('strong').find('a').get('href')).replace('/',''))
                     url_list.append("http://t.qq.com" + str(li.find('strong').find('a').get('href')))
                 except:
