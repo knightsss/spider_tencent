@@ -153,12 +153,12 @@ def connect_mongodb():
 #########################  以下 linux 入库到mongodb
 def load_mongodb(conn,url,msg):
     db = conn.db_tx_wb_msg
-    t_tencent_wb_msg2 = db.t_tencent_wb_msg2
+    t_tencent_wb_msg3 = db.t_tencent_wb_msg3
     msg_label = {
         'wid':url,
         'info':msg
     }
-    t_tencent_wb_msg2.insert(msg_label)
+    t_tencent_wb_msg3.insert(msg_label)
     return 0
 ###########################  以下 windows 入库到mongodb
 # def load_mongodb(conn,url,msg):

@@ -209,7 +209,7 @@ def mysql_connect():
 
 def insert_mysql(mysql_conn,tmp):
     mysql_cursor = mysql_conn.cursor()
-    sql = "insert into t_tencent_wb_auditor2(wid, auditor_wid) values(%s, %s)"
+    sql = "insert into t_tencent_wb_auditor3(wid, auditor_wid) values(%s, %s)"
     # tmp结构 tmp = (('00', '0000'), ('10', '111'))
     mysql_cursor.executemany(sql, tmp)
     mysql_conn.commit()
