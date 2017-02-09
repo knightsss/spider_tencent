@@ -57,27 +57,27 @@ ROOT_URLCONF = 'qq_wb_web.urls'
 WSGI_APPLICATION = 'qq_wb_web.wsgi.application'
 
 ##########################linux配置
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_spider_thread',
-        'USER':'qzone_spider',
-        'PASSWORD':'qzone_spider',
-        'HOST':'192.168.15.111',
-        'PORT':'3306',
-    }
-}
-############################windows配置
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'spider',
-#         'USER':'root',
-#         'PASSWORD':'123456',
-#         'HOST':'localhost',
-#         'PORT':'3308',
+#         'NAME': 'db_spider_thread',
+#         'USER':'qzone_spider',
+#         'PASSWORD':'qzone_spider',
+#         'HOST':'192.168.15.111',
+#         'PORT':'3306',
 #     }
 # }
+############################windows配置
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'spider',
+        'USER':'root',
+        'PASSWORD':'123456',
+        'HOST':'localhost',
+        'PORT':'3308',
+    }
+}
 
 LANGUAGE_CODE = 'en-us'
 
