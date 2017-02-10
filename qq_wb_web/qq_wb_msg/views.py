@@ -63,7 +63,7 @@ def control_thread(request):
     if control == 'stop':
         # thread1_status = False
         # status = 0
-        rtx('ip','进程' + str(th_name) + '  采集标签信息停止')
+        rtx('ip','进程' + str(th_name) + '  采集标签信息即将停止')
         c  = ThreadControl()
         try:
             c.stop(th_name)

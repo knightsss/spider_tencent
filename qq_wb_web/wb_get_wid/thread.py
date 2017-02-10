@@ -113,7 +113,7 @@ def loaddata(c_thread,thread_num,interval):
                                 push_redis_list_tmp(conn_redis,auditor_mid)
                         except:
                             rtx('ip',ip+ "机器redis出错")
-                            print "insert mysql error"
+                            print "insert redis error"
 
         print thread_num,"quit phantomjs"
         driver.quit()

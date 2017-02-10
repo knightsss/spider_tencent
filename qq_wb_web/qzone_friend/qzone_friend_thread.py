@@ -3,7 +3,7 @@ __author__ = 'shifeixiang'
 import time
 import thread
 import threading
-from login.views import qzone_login
+from login.login import qzone_login
 from db.db_redis import redis_connect,pop_redis_list,push_redis_list_tmp
 from db.db_mysql import mysql_connect_qq,mysql_connect_local_qq,insert_mysql_qq,get_tuple
 

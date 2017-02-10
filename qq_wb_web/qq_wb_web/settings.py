@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'wb_get_wid',
     'tencent_wb_user',
     'qzone_friend',
+    'qzone_info',
 )
 
 MIDDLEWARE_CLASSES = (

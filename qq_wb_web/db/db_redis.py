@@ -11,7 +11,7 @@ def redis_connect():
     except:
         rtx('IP','redis连接异常')
         print "connect redis error"
-        return None
+        redis_conn = 0
     return redis_conn
 
 #出wid消息队列
