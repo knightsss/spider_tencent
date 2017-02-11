@@ -19,7 +19,7 @@ def redis_connect():
 def pop_redis_list(redis_conn,redis_list_name):
     try:
         qq = redis_conn.lpop(redis_list_name)
-        print "pop ok"
+        # print "pop ok"
     except:
         # redis_conn = redis_connect()
         print "pop faild"

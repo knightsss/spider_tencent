@@ -81,6 +81,7 @@ def loaddata(c_thread,thread_num,interval):
             #判断队列是否为空
             if url == None:
                 print "queue is NULL"
+                break
             else:
                 #获取详细信息
                 msg = get_msg(driver,url)

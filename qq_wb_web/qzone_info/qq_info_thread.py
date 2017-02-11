@@ -80,6 +80,7 @@ def loaddata(c_thread,thread_num,interval):
             #判断队列是否为空
             if qq == None:
                 print "queue is NULL"
+                break
             else:
                 #获取详细信息
                 url = "http://user.qzone.qq.com/"+str(qq)+"/profile"
