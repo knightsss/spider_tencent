@@ -64,8 +64,8 @@ def loaddata(c_thread,thread_num,interval):
 
     #连接redis
     conn_redis = redis_connect()
-    redis_list_name_pop = "tencent_qzone_qq_test"
-    redis_list_name_push = "tencent_qzone_qq_tmp_test"
+    redis_list_name_pop = "tencent_qzone_qq"
+    redis_list_name_push = "tencent_qzone_qq_transfer"
     print "conn_redis",conn_redis
     if conn_redis == None  :
         print "redis connect error"

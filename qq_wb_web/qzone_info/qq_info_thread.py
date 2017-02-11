@@ -64,8 +64,8 @@ def loaddata(c_thread,thread_num,interval):
     print "conn_redis",conn_redis
     print "conn_mongo",conn_mongo
     #定义pop的redis名字
-    redis_list_pop_name = "tencent_qzone_qq_info_tmp"
-    redis_list_push_qzone_forbid_name = "tencent_qzone_forbid_qq_tmp"
+    redis_list_pop_name = "tencent_qzone_qq_info"
+    redis_list_push_qzone_forbid_name = "tencent_qzone_forbid_qq"
 
     if conn_redis == 0 or conn_mongo == 0:
         print "redis or mongodb connect error"
