@@ -93,13 +93,13 @@
                                     </td>
                                     <td>
                                         {% if thread.thread_status %}
-                                            {% if all_msg_active %}
+                                            {% if all_info_active %}
                                                 <button type="button" class="btn btn-default btn-danger disabled" onclick="stop_thread('{{ thread.thread_name }}')">停止</button>
                                             {% else %}
                                                 <button type="button" class="btn btn-default btn-danger " onclick="stop_thread('{{ thread.thread_name }}')">停止</button>
                                             {% endif %}
                                         {% else %}
-                                            {% if all_msg_active %}
+                                            {% if all_info_active %}
                                                 <button type="button" class="btn btn-default btn-success disabled" onclick="start_thread( '{{ thread.thread_name }}' )">启动</button>
                                             {% else %}
                                                 <button type="button" class="btn btn-default btn-success" onclick="start_thread( '{{ thread.thread_name }}' )">启动</button>
