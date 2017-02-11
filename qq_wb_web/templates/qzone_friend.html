@@ -12,12 +12,21 @@
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<ul class="nav nav-tabs">
-                 <li>
-					 <a href="/thread_msg_all">个人标签信息(所有活跃线程)</a>
+                {% if all_info_active %}
+                    <li class="active">
+                {% else %}
+                     <li>
+                {% endif %}
+                         <a href="/qzone_info_all">个人标签信息(所有活跃线程)</a>
+                    </li>
+                {% if info_active %}
+                    <li class="active">
+                {% else %}
+                     <li>
+                {% endif %}
+					 <a href="/qzone_info">个人标签信息(单机活跃线程)</a>
 				</li>
-				<li >
-					 <a href="/index">个人标签信息(单机活跃线程)</a>
-				</li>
+
                 {% if all_friend_active %}
                     <li class="active">
                 {% else %}

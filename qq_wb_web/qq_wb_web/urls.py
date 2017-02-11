@@ -9,6 +9,7 @@ from wb_get_wid.views import thread_auditor_all
 import settings
 from main.views import main
 from qzone_friend.views import qzone_friend,qzone_friend_all,control_friend_thread
+from qzone_info.views import qzone_info,qzone_info_all
 
 admin.autodiscover()
 
@@ -32,6 +33,10 @@ urlpatterns = patterns('',
     url(r'^qzone_friend/$',qzone_friend),
     url(r'^qzone_friend_all/$',qzone_friend_all),
     url(r'^control_friend_thread/$',control_friend_thread),
+
+
+    url(r'^qzone_info/$',qzone_info),
+    url(r'^qzone_info_all/$',qzone_info_all),
 
 
 

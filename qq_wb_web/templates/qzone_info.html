@@ -12,34 +12,35 @@
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<ul class="nav nav-tabs">
-                {% if all_msg_active %}
+                {% if all_info_active %}
                     <li class="active">
                 {% else %}
                      <li>
                 {% endif %}
-                         <a href="/thread_msg_all">个人标签信息(所有活跃线程)</a>
+                         <a href="/qzone_info_all">个人标签信息(所有活跃线程)</a>
                     </li>
-                {% if msg_active %}
+                {% if info_active %}
                     <li class="active">
                 {% else %}
                      <li>
                 {% endif %}
-					 <a href="/index">个人标签信息(单机活跃线程)</a>
+					 <a href="/qzone_info">个人标签信息(单机活跃线程)</a>
 				</li>
 
-				<{% if all_auditor_active %}
+				{% if all_friend_active %}
                     <li class="active">
                 {% else %}
                      <li>
                 {% endif %}
-					 <a href="/thread_auditor_all">关系链(所有活跃线程)</a>
+					 <a href="/qzone_friend_all">关系链(所有活跃线程)</a>
 				</li>
-                {% if  auditor_thread %}
+
+                {% if friend_thread %}
                     <li class="active">
                 {% else %}
                      <li>
                 {% endif %}
-                    <a href="/auditor">关系链(单机活跃线程)</a>
+					 <a href="/qzone_friend">关系链(单机活跃线程)</a>
 				</li>
 				<li href="#">
 					 <a href="#">详细信息</a>
@@ -78,10 +79,10 @@
                             {% for thread in thread_list %}
                                 <tr class="success">
                                     <td>
-                                        腾讯微博个人信息采集-线程{{ thread.thread_name }}
+                                        QQ空间个人信息采集-线程{{ thread.thread_name }}
                                     </td>
                                     <td>
-                                        <a href="http://{{ thread.thread_ip }}:8012/index/"  target="_blank">{{ thread.thread_ip }}</a>
+                                        <a href="http://{{ thread.thread_ip }}:8012/qzone_info/"  target="_blank">{{ thread.thread_ip }}</a>
                                     </td>
                                     <td>
                                         {% if thread.thread_status %}
@@ -123,7 +124,7 @@
 function start_thread(thread_name){
     var confirmMsg = confirm("确定启动?");
     if (confirmMsg) {
-        post_form("/control_thread/",{"id":thread_name,"control":'start'});
+        post_form("/control_qzone_info_thread/",{"id":thread_name,"control":'start'});
     } else {
         return false;
     }
@@ -132,7 +133,7 @@ function start_thread(thread_name){
 function stop_thread(thread_name){
     var confirmMsg = confirm("确定停止?");
     if (confirmMsg) {
-        post_form("/control_thread/",{"id":thread_name,"control":'stop'});
+        post_form("/control_qzone_info_thread/",{"id":thread_name,"control":'stop'});
     } else {
         return false;
     }
