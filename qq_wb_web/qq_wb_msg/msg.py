@@ -121,7 +121,7 @@ def pop_redis_list(redis_conn):
         # print "pop ok"
     except:
         # redis_conn = redis_connect()
-        print "pop faild"
+        print "tencent_wb_msg_wid pop faild"
         url = None
     return url
 
