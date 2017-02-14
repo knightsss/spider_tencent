@@ -92,7 +92,7 @@ def loaddata(c_thread,thread_num,interval):
                 break
             else:
                 #获取详细信息
-                msg = get_msg(driver,url)
+                msg = get_msg(driver,url,log)
                 # print "load to mongodb"
                 try:
                     load_mongodb(conn_mongo,url,msg)

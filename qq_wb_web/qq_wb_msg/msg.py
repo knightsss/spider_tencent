@@ -173,7 +173,7 @@ def load_mongodb(conn,url,msg):
 ###########################   以上 windows 入库到mongodb
 
 
-def get_msg(driver,url):
+def get_msg(driver,url,log):
     wid = url
     msg_url = "http://p.t.qq.com/m/home_userinfo.php?u=" + str(wid)
     try:
@@ -181,7 +181,8 @@ def get_msg(driver,url):
         try:
             element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CLASS_NAME , "u_info")))
             # print "find userName"
-            # print "driver.current_url",driver.current_url
+            print "driver.current_url" + driver.current_url
+            log.info("driver.current_url" + driver.current_url)
             soup = BeautifulSoup(driver.page_source)
             msg = soup.find(class_='u_info')
             msg_list = []
