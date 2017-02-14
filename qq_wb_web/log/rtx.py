@@ -12,9 +12,26 @@ import logging.config
 import socket
 
 
+import socket
+#fcntl是posix接口，windows下没有的
+import fcntl
+import struct
+#禁止使用
+'''
 def get_ip():
     IP = socket.gethostbyname(socket.gethostname())
     return IP
+'''
+#通过网卡获取
+def get_ip():
+    ifname = "eth0"
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    return socket.inet_ntoa(fcntl.ioctl(
+        s.fileno(),
+        0x8915,  # SIOCGIFADDR
+        struct.pack('256s', ifname[:15])
+    )[20:24])
+
 
 def rtx(base_title,base_msg):
     # msg_db = sys.argv[1]
