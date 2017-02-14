@@ -84,7 +84,7 @@ def loaddata(c_thread,thread_num,interval):
             else:
                 base_date = current_date
                 log = log_setting(log_name_title + base_date + ".log")
-            log.info('Thread:(%s) Time:%s'%(thread_num,time.ctime()))
+            log.info('Thread:(%s)'%(thread_num))
             url = pop_redis_list(conn_redis)
             #判断队列是否为空
             if url == None:

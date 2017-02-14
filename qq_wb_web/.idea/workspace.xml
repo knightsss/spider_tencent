@@ -27,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="thread.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="thread.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/qq_wb_msg/thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60090363">
-              <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="94" column="41" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
               <folding>
                 <element signature="e#41#52#0" expanded="true" />
               </folding>
@@ -43,11 +43,21 @@
         <entry file="file://$PROJECT_DIR$/wb_get_wid/thread.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="127" column="36" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="36" />
+              <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
               <folding>
                 <element signature="e#41#52#0" expanded="true" />
-                <marker date="1487041022737" expanded="true" signature="3713:3730" placeholder="insert into ..." />
+                <marker date="1487041966591" expanded="true" signature="3764:3781" placeholder="insert into ..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/log/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4006024">
+              <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -119,16 +129,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="db_mongodb.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/db_mongodb.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -185,9 +185,9 @@
         <option value="$PROJECT_DIR$/qzone_friend/qzone_friend_thread.py" />
         <option value="$PROJECT_DIR$/db/db_mysql.py" />
         <option value="$PROJECT_DIR$/qq_wb_msg/msg.py" />
-        <option value="$PROJECT_DIR$/log/views.py" />
         <option value="$PROJECT_DIR$/wb_get_wid/thread.py" />
         <option value="$PROJECT_DIR$/qq_wb_msg/thread.py" />
+        <option value="$PROJECT_DIR$/log/views.py" />
       </list>
     </option>
   </component>
@@ -1122,14 +1122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/qq_wb_msg/msg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1138,24 +1130,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wb_get_wid/thread.py">
+    <entry file="file://$PROJECT_DIR$/qq_wb_msg/thread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="36" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="36" />
+          <caret line="94" column="41" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
           <folding>
             <element signature="e#41#52#0" expanded="true" />
-            <marker date="1487041022737" expanded="true" signature="3713:3730" placeholder="insert into ..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qq_wb_msg/thread.py">
+    <entry file="file://$PROJECT_DIR$/wb_get_wid/thread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60090363">
-          <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="14" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
           <folding>
             <element signature="e#41#52#0" expanded="true" />
+            <marker date="1487041966591" expanded="true" signature="3764:3781" placeholder="insert into ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4006024">
+          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
