@@ -78,9 +78,9 @@ def get_auditor_page_url_via_url(driver,main_url):
     #存在异常情况
     print "main_url",main_url
     try:
-        print "driver.current_url is ",driver.current_url
+        # print "driver.current_url is ",driver.current_url
         driver.back()
-        print "driver.current_url is back ",driver.current_url
+        # print "driver.current_url is back ",driver.current_url
         driver.get(main_url)
     except:
         print "driver error,login again!"
@@ -98,7 +98,7 @@ def get_auditor_page_url_via_url(driver,main_url):
         auditor_page_url_list = []
         try:
             li_list = soup.find(class_='list  ').find_all('li')
-            print "list"
+            # print "list"
         except:
             li_list = soup.find(class_='list  list_limit ').find_all('li')
             print "list_limit"
@@ -115,9 +115,9 @@ def get_auditor_page_url_via_url(driver,main_url):
                     #构造收听的每一页的page url
                     auditor_page_url_list.append(str(li.a.get('href')).replace('t=1',"t=1#u=" + str(mid) + "&t=1&st=1&p=" + str(page+1)))
 
-                    print "last", str(li.a.get('href')).replace('t=1',"t=1#u=shuixingzhan&t=1&st=1&p=" + str(page+1))
-                print "page_num",page_num
-        print "find audience list"
+                    # print "last", str(li.a.get('href')).replace('t=1',"t=1#u=shuixingzhan&t=1&st=1&p=" + str(page+1))
+                # print "page_num",page_num
+        # print "find audience list"
     except:
         print "connot visit the url,not find audience list label,not the personal weibo"
         auditor_page_url_list = None
@@ -146,7 +146,7 @@ def get_auditor_main_url(driver, auditor_page_url_list):
         try:
             element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CLASS_NAME , "userName")))
             # print "find userName"
-            print "driver.current_url",driver.current_url
+            # print "driver.current_url",driver.current_url
             main_page = driver.page_source
             soup = BeautifulSoup(main_page)
             # if count == 1:
