@@ -71,11 +71,12 @@ def loaddata(c_thread,thread_num,interval):
     #出队
     conn_redis = redis_connect()
     conn_mongo = connect_mongodb()
-    log.info("conn_redis" + conn_redis)
-    log.info("conn_mongo" + conn_mongo)
+
     if conn_redis == 0 or conn_mongo == 0:
         log.info("redis or mongodb connect error")
     else:
+        log.info("connect redis ok")
+        log.info("connect mongodb ok")
         while not c_thread.thread_stop:
             current_date = time.strftime("%Y%m%d", time.localtime())
             if current_date == base_date:

@@ -61,11 +61,11 @@ def loaddata(c_thread,thread_num,interval):
     #mysql连接 异常返回None
     #mysql_conn = mysql_connect()
     # conn_mongo = connect_mongodb()
-    log.info("conn_redis" + conn_redis)
     # print "conn_mongo",conn_mongo
     if conn_redis == None  :
         log.info("redis connect error")
     else:
+        log.info("connect redis ok")
         ip = get_ip()
         while not c_thread.thread_stop:
             current_date = time.strftime("%Y%m%d", time.localtime())
