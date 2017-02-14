@@ -55,50 +55,59 @@ class ThreadControl():
         spider.stop()
 
 def loaddata(c_thread,thread_num,interval):
-    print "run......"
+    log_name_title = "tencent_wb_msg_"
+    ip = get_ip()
+    base_date = time.strftime("%Y%m%d", time.localtime())
+    log = log_setting(log_name_title + base_date + ".log")
+    log.info("run......")
     driver = qq_login()
     time.sleep(3)
 
     if driver == None :
-        "phantomjs error!quit"
+        log.info("phantomjs error!quit")
         return 0
     else:
         pass
     #出队
     conn_redis = redis_connect()
     conn_mongo = connect_mongodb()
-    print "conn_redis",conn_redis
-    print "conn_mongo",conn_mongo
+    log.info("conn_redis" + conn_redis)
+    log.info("conn_mongo" + conn_mongo)
     if conn_redis == 0 or conn_mongo == 0:
-        print "redis or mongodb connect error"
+        log.info("redis or mongodb connect error")
     else:
-        ip = get_ip()
         while not c_thread.thread_stop:
-            print 'Thread:(%s) Time:%s\n'%(thread_num,time.ctime())
-            log = log_setting()
-            log.info('Thread:(%s) Time:%s\n'%(thread_num,time.ctime()))
+            current_date = time.strftime("%Y%m%d", time.localtime())
+            if current_date == base_date:
+                pass
+            else:
+                base_date = current_date
+                log = log_setting(log_name_title + base_date + ".log")
+            log.info('Thread:(%s) Time:%s'%(thread_num,time.ctime()))
             url = pop_redis_list(conn_redis)
             #判断队列是否为空
             if url == None:
-                print "msg queue is NULL"
+                log.info("msg queue is NULL")
                 break
             else:
                 #获取详细信息
                 msg = get_msg(driver,url)
-                print "load to mongodb"
+                # print "load to mongodb"
                 try:
                     load_mongodb(conn_mongo,url,msg)
                 except:
                     rtx('ip',ip+ "机器mongodb失败")
-                    print "mongodb error"
+                    log.info('ip' + ip + "机器mongodb失败")
+                    log.info("mongodb error")
                     break
         # rtx('IP','正常停止')
-        print thread_num,"quit phantomjs"
+        log.info(thread_num + "quit phantomjs")
         driver.quit()
         #rtx提醒
         rtx('ip',ip+ "机器" + thread_num +"停止运行")
+        log.info('ip'+ ip + "机器" + thread_num + "停止运行")
         #数据库状态更新,根据线程名称
-        print "更新数据库线程状态"
+        log.info("更新数据库线程状态")
         thread = ThreadMsg.objects.get(thread_name=thread_num)
         thread.thread_status = 0
         thread.save()

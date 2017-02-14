@@ -7,7 +7,7 @@ import os
 
 
 
-def log_setting():
+def log_setting(file_name):
     ##############linux
     file_abspath = os.getcwd() + "/log/"
     ##############windows
@@ -16,7 +16,7 @@ def log_setting():
     logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',
-                    filename= file_abspath + 'spider_server.log',
+                    filename= file_abspath + file_name,
                     filemode='a')
 
     return logging
