@@ -10,7 +10,7 @@ def qzone_login():
     while flag:
         try:
             #driver = webdriver.PhantomJS('E:\\phantomjs\\phantomjs-2.1.1-windows\\phantomjs-2.1.1-windows\\bin\\phantomjs')
-            driver = webdriver.PhantomJS(executable_path='/usr/local/phantomjs/bin/phantomjs')
+            driver = webdriver.PhantomJS(executable_path='/usr/local/phantomjs/bin/phantomjs',service_log_path='/data/tmp/ghostdriver.log')
             flag = 0
         except:
             print "PhantomJS error,wait a moment!"

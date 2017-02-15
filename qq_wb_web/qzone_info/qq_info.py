@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-def get_info(driver, url):
+def get_info(driver, url, log):
         try:
             driver.set_page_load_timeout(30)
             driver.get(url)     #获取网址异常判断
@@ -30,7 +30,7 @@ def get_info(driver, url):
             # time.sleep(3)
         except:
             #将未加载完成的qq写入文件
-            print "Refuse visit!!!"
+            log.info("Refuse visit!!!")
             # driver.quit()
             # driver = qq_login()
             return 0
@@ -38,9 +38,9 @@ def get_info(driver, url):
         try:
             driver.find_element_by_class_name('head-detail-name').text
         except:
-            print "get name error!"
+            log.info("get name error!")
             #考虑将名字未找到的qq写入文件
-            print "Timeout! quit current page right now!"
+            log.info("Timeout! quit current page right now!")
             driver.quit()
             driver = qzone_login()
             return 0
@@ -151,6 +151,6 @@ def get_info(driver, url):
             info_list.append(company_caddress.encode('utf-8'))
             info_list.append(caddress.encode('utf-8'))
         except:
-            print "get msg error!"
+            log.info("get msg error!")
             return 0
         return info_list

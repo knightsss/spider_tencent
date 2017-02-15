@@ -58,7 +58,7 @@ def qq_login():
     while flag:
         try:
             ###################linux
-            driver = webdriver.PhantomJS(executable_path='/usr/local/phantomjs/bin/phantomjs')
+            driver = webdriver.PhantomJS(executable_path='/usr/local/phantomjs/bin/phantomjs',service_log_path='/data/tmp/ghostdriver.log')
             ###################windows
             # if proxy_status:
             #     print "use proxy"

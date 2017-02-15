@@ -6,7 +6,8 @@ import logging.config
 import os
 
 
-
+#默认使用root
+'''
 def log_setting():
     ##############linux
     file_abspath = os.getcwd() + "/log/"
@@ -20,4 +21,27 @@ def log_setting():
                     filemode='a')
 
     return logging
+'''
+#自定义logger name
+def log_setting(file_name):
+    logger_name = file_name[0:-4]
+    print logger_name
+    logger = logging.getLogger(logger_name)
+    logger.setLevel(logging.INFO)
+
+    # create file handler
+    file_abspath = os.getcwd() + "/log/"
+    log_path = file_abspath + file_name
+    fh = logging.FileHandler(log_path)
+    fh.setLevel(logging.INFO)
+
+    # create formatter
+    fmt = "%(asctime)-15s %(levelname)s %(filename)s %(lineno)d %(process)d %(message)s"
+    datefmt = "%a %d %b %Y %H:%M:%S"
+    formatter = logging.Formatter(fmt, datefmt)
+
+    # add handler and formatter to logger
+    fh.setFormatter(formatter)
+    logger.addHandler(fh)
+    return logger
 
