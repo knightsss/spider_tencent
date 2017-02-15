@@ -10,7 +10,7 @@ from log.rtx import rtx
 def connect_mongodb():
     #新版本连接方式
     try:
-        conn = MongoClient("127.0.0.1", 27017)
+        conn = MongoClient("192.168.8.25", 27017)
     except:
         conn = 0
         rtx('IP','mongodb连接异常')
