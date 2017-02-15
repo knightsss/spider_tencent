@@ -1,3 +1,5 @@
+
+#coding=utf-8
 from django.shortcuts import render
 
 # Create your views here.
@@ -6,7 +8,7 @@ import logging.config
 import os
 
 
-#默认使用root
+#榛樿浣跨敤root
 '''
 def log_setting():
     ##############linux
@@ -22,7 +24,7 @@ def log_setting():
 
     return logging
 '''
-#自定义logger name
+#鑷畾涔塴ogger name
 def log_setting(file_name):
     logger_name = file_name[0:-4]
     print logger_name
