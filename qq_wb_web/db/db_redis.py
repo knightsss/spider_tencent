@@ -7,7 +7,8 @@ def redis_connect():
     #带密码连接
     # r = redis.StrictRedis(host='localhost', port=6379, password='npq8pprjxnppn477xssn')
     try:
-        redis_conn = redis.Redis(host='192.168.8.25',port=6379,db=0)
+        # redis_conn = redis.Redis(host='192.168.8.25',port=6379,db=0)
+        redis_conn = redis.StrictRedis(host='192.168.8.25', port=6379, password='npq8pprjxnppn477xssn',db=0)
     except:
         rtx('IP','redis连接异常')
         print "connect redis error"
