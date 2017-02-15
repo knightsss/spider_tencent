@@ -32,7 +32,7 @@ def log_setting(file_name):
     logger.setLevel(logging.INFO)
 
     # create file handler
-    file_abspath = os.getcwd() + "/log/"
+    file_abspath = "/data/logs/m17/bd/spider/tencent/"
     log_path = file_abspath + file_name
     fh = logging.FileHandler(log_path)
     fh.setLevel(logging.INFO)
