@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def get_info(driver, url, log):
         try:
+            print "url is : ",url
             driver.set_page_load_timeout(30)
             driver.get(url)     #获取网址异常判断
         except:

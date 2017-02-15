@@ -165,4 +165,3 @@ def loaddata(c_thread,thread_num,interval):
         thread.thread_status = 0
         thread.save()
 '''
-
