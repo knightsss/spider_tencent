@@ -54,6 +54,68 @@ class ThreadControl():
         spider = self.current_thread[str(thread_num)]
         spider.stop()
 
+
+
+
+def loaddata(c_thread,thread_num,interval):
+    log_name_title = "tencent_wb_msg_"
+    ip = get_ip()
+    base_date = time.strftime("%Y%m%d", time.localtime())
+    log = log_setting(log_name_title + base_date + ".log")
+    log.info("run......")
+    driver = qq_login()
+    time.sleep(3)
+
+    if driver == None :
+        log.info("phantomjs error!quit")
+        return 0
+    else:
+        pass
+    #出队
+    conn_redis = redis_connect()
+    conn_mongo = connect_mongodb()
+
+    if conn_redis == 0 or conn_mongo == 0:
+        log.info("redis or mongodb connect error")
+    else:
+        log.info("connect redis ok")
+        log.info("connect mongodb ok")
+        while not c_thread.thread_stop:
+            current_date = time.strftime("%Y%m%d", time.localtime())
+            if current_date == base_date:
+                pass
+            else:
+                base_date = current_date
+                log = log_setting(log_name_title + base_date + ".log")
+            log.info('Thread:(%s)'%(thread_num))
+            url = pop_redis_list(conn_redis)
+            #判断队列是否为空
+            if url == None:
+                log.info("msg queue is NULL")
+                break
+            else:
+                #获取详细信息
+                msg = get_msg(driver,url,log)
+                # print "load to mongodb"
+                try:
+                    load_mongodb(conn_mongo,url,msg)
+                except:
+                    rtx('ip',ip+ "机器mongodb失败")
+                    log.info('ip' + ip + "机器mongodb失败")
+                    log.info("mongodb error")
+                    break
+        # rtx('IP','正常停止')
+        log.info(thread_num + "quit phantomjs")
+        driver.quit()
+        #rtx提醒
+        rtx('ip',ip+ "机器" + thread_num +"停止运行")
+        log.info('ip'+ ip + "机器" + thread_num + "停止运行")
+        #数据库状态更新,根据线程名称
+        log.info("更新数据库线程状态")
+        thread = ThreadMsg.objects.get(thread_name=thread_num)
+        thread.thread_status = 0
+        thread.save()
+'''
 def loaddata(c_thread,thread_num,interval):
     print "run......"
     driver = qq_login()
@@ -102,3 +164,5 @@ def loaddata(c_thread,thread_num,interval):
         thread = ThreadMsg.objects.get(thread_name=thread_num)
         thread.thread_status = 0
         thread.save()
+'''
+
