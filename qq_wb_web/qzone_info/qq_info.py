@@ -28,14 +28,14 @@ def get_info(driver, url, log):
         #捕获空间访问异常的情况
         try:
             driver.find_element_by_id('aOwnerFeeds').click()        #是否具有访问权限，有的话，
-            # time.sleep(3)
+            time.sleep(3)
         except:
             #将未加载完成的qq写入文件
             log.info("Refuse visit!!!")
             # driver.quit()
             # driver = qq_login()
             return 0
-        # time.sleep(3)
+        time.sleep(3)
         try:
             driver.find_element_by_class_name('head-detail-name').text
         except:
@@ -63,6 +63,7 @@ def get_info(driver, url, log):
         #捕获获取个人信息异常的情况
         try:
             driver.switch_to.frame(driver.find_element_by_class_name('app_canvas_frame'))   #切换到对应的子框架
+            time.sleep(5)
             try:
                 element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.ID , "info_tab")))
                 print "个人信息可获取"
@@ -72,7 +73,7 @@ def get_info(driver, url, log):
             print "获取个人信息!"
             # time.sleep(5)
             driver.find_element_by_id('info_tab').click()
-            # time.sleep(5)
+            time.sleep(5)
             my_page = driver.page_source
             soup = BeautifulSoup(my_page)
 
@@ -129,7 +130,7 @@ def get_info(driver, url, log):
             caddress_element = soup.find('div',id="caddress")
             for caddress_sub in caddress_element.stripped_strings:
                 caddress = caddress_sub
-
+            time.sleep(3)
             info_list = []
             # info_list.append(qq)
             info_list.append(name.encode('utf-8'))
