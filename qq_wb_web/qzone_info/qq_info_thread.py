@@ -49,7 +49,7 @@ class ThreadControl():
         spider.stop()
 
 def loaddata(c_thread,thread_num,interval):
-    log_name_title = "tencent_qzone_info_"
+    log_name_title = c_thread + "_tencent_qzone_info_"
     ip = get_ip()
     base_date = time.strftime("%Y%m%d", time.localtime())
     log = log_setting(log_name_title + base_date + ".log")
