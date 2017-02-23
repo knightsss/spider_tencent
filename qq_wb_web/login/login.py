@@ -10,15 +10,20 @@ def qzone_login():
     login_flag = 1
     login_times = 1
     while login_flag:
-        flag = 1
-        while flag:
+        driver_flag = 1
+        driver_times = 1
+        while driver_flag:
             try:
                 #driver = webdriver.PhantomJS('E:\\phantomjs\\phantomjs-2.1.1-windows\\phantomjs-2.1.1-windows\\bin\\phantomjs')
                 driver = webdriver.PhantomJS(executable_path='/usr/local/phantomjs/bin/phantomjs',service_log_path='/data/tmp/ghostdriver.log')
-                flag = 0
+                driver_flag = 0
             except:
                 print "PhantomJS error,wait a moment!"
                 time.sleep(10)
+            driver_times = driver_times + 1
+            if driver_times > 5:
+                driver_flag = 0
+
         try:
             driver.get("http://i.qq.com/")
             time.sleep(3)
@@ -30,7 +35,7 @@ def qzone_login():
             driver.find_element_by_id("login_button").click()
             time.sleep(10)
             print "driver.current_url is",driver.current_url
-            if driver.current_url == "http://user.qzone.qq.com/1251314160" :
+            if driver.current_url == "http://user.qzone.qq.com/208963414" :
                 login_flag = 0
             else:
                 print "url 不一致!"
@@ -42,5 +47,6 @@ def qzone_login():
         login_times = login_times + 1
         if login_times > 10:
             rtx('ip','qq login error')
-            break
+            driver = None
+            login_flag = 0
     return driver
