@@ -21,6 +21,7 @@ def get_info(driver, url, log):
                 driver.get(url)     #获取网址异常判断
             except:
                 #将未加载完成的qq写入文件
+                log.info("request error!!!")
                 print "Timeout! quit current page right now!"
                 driver.quit()
                 # driver = qzone_login()
@@ -32,9 +33,7 @@ def get_info(driver, url, log):
         except:
             #将未加载完成的qq写入文件
             log.info("Refuse visit!!!")
-            # driver.quit()
-            # driver = qq_login()
-            return 0
+            return 1
         time.sleep(3)
         try:
             driver.find_element_by_class_name('head-detail-name').text
@@ -42,9 +41,7 @@ def get_info(driver, url, log):
             log.info("get name error!")
             #考虑将名字未找到的qq写入文件
             log.info("Timeout! quit current page right now!")
-            driver.quit()
-            # driver = qzone_login()
-            return 0
+            return 1
             # name = "None"
         try:
             driver.find_element_by_class_name('detail-info-level')          #黄钻是否存在
