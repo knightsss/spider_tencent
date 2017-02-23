@@ -107,6 +107,11 @@ def loaddata(c_thread,thread_num,interval):
                     log.info(qq + "入队禁止访问消息队列")
                     driver = qzone_login()
                     pass
+                elif info_list == 1:
+                    #qq放入redis消息队列
+                    push_redis_list_tmp(conn_redis,redis_list_push_qzone_forbid_name,qq)
+                    log.info(qq + "入队禁止访问消息队列")
+                    pass
                 else:
                     #存入mongodb
                     log.info("load to mongodb")

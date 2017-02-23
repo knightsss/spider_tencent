@@ -154,5 +154,5 @@ def get_info(driver, url, log):
             info_list.append(caddress.encode('utf-8'))
         except:
             log.info("get msg error!")
-            return 0
+            return 1
         return info_list
