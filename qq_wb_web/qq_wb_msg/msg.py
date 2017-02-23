@@ -18,6 +18,8 @@ from tencent_wb_user.models import TencentUser
 from tencent_wb_user.models import TencentProxy
 import random
 from log.rtx import rtx
+
+import base64
 #定义当前帐号用户数量
 # USER_COUNT = 2
 # PROXY_COUNT = 0
@@ -50,7 +52,7 @@ def qq_login():
     #去数据库中取，随机获取登陆帐号
     user = TencentUser.objects.get(user_id=user_number)
     login_name = user.login_name
-    login_pwd = user.login_password
+    login_pwd = base64.decodestring(user.login_password)
     tencent_wb_name = user.tencent_wb_name
 
     flag = 1

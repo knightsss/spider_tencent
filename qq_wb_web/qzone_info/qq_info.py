@@ -23,7 +23,7 @@ def get_info(driver, url, log):
                 #将未加载完成的qq写入文件
                 print "Timeout! quit current page right now!"
                 driver.quit()
-                driver = qzone_login()
+                # driver = qzone_login()
                 return 0
         #捕获空间访问异常的情况
         try:
@@ -43,7 +43,7 @@ def get_info(driver, url, log):
             #考虑将名字未找到的qq写入文件
             log.info("Timeout! quit current page right now!")
             driver.quit()
-            driver = qzone_login()
+            # driver = qzone_login()
             return 0
             # name = "None"
         try:

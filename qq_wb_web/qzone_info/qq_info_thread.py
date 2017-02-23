@@ -98,11 +98,14 @@ def loaddata(c_thread,thread_num,interval):
                 #获取详细信息
                 url = "http://user.qzone.qq.com/"+str(qq)+"/profile"
                 info_list = get_info(driver,url, log)
+
                 # print info_list
                 # msg = get_msg(driver,url)
                 if info_list == 0:
                     #qq放入redis消息队列
                     push_redis_list_tmp(conn_redis,redis_list_push_qzone_forbid_name,qq)
+                    log.info(qq,"入队禁止访问消息队列")
+                    driver = qzone_login()
                     pass
                 else:
                     #存入mongodb

@@ -5,8 +5,25 @@ from django.shortcuts import render
 from selenium import webdriver
 import time
 from log.rtx import rtx
+from tencent_wb_user.models import TencentUser
+from tencent_wb_user.models import TencentProxy
+import random
+import base64
 
 def qzone_login():
+
+    USER_COUNT = TencentUser.objects.count()
+    PROXY_COUNT = TencentProxy.objects.count()
+
+    user_number = random.randint(1, USER_COUNT)
+
+    #去数据库中取，随机获取登陆帐号
+    user = TencentUser.objects.get(user_id=user_number)
+    login_name = user.login_name
+    #密码解密s2 = base64.decodestring(s1)
+    login_pwd = base64.decodestring(user.login_password)
+    qq_qzone_name = user.qq_qzone_name
+
     login_flag = 1
     login_times = 1
     while login_flag:
@@ -30,12 +47,12 @@ def qzone_login():
             # driver.switch_to_frame("login_frame")
             driver.switch_to.frame("login_frame")
             driver.find_element_by_id("switcher_plogin").click()
-            driver.find_element_by_id("u").send_keys("2089634140@qq.com")
-            driver.find_element_by_id("p").send_keys("mk123456789")
+            driver.find_element_by_id("u").send_keys(login_name)
+            driver.find_element_by_id("p").send_keys(login_pwd)
             driver.find_element_by_id("login_button").click()
             time.sleep(10)
             print "driver.current_url is",driver.current_url
-            if driver.current_url == "http://user.qzone.qq.com/208963414" :
+            if driver.current_url == "http://user.qzone.qq.com/" + qq_qzone_name :
                 login_flag = 0
             else:
                 print "url 不一致!"
