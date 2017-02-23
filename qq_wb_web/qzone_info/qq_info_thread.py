@@ -104,7 +104,7 @@ def loaddata(c_thread,thread_num,interval):
                 if info_list == 0:
                     #qq放入redis消息队列
                     push_redis_list_tmp(conn_redis,redis_list_push_qzone_forbid_name,qq)
-                    log.info(qq,"入队禁止访问消息队列")
+                    log.info(qq + "入队禁止访问消息队列")
                     driver = qzone_login()
                     pass
                 else:
