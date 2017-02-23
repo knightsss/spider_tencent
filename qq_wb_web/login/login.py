@@ -52,7 +52,7 @@ def qzone_login():
             driver.find_element_by_id("login_button").click()
             time.sleep(10)
             print "driver.current_url is",driver.current_url
-            if driver.current_url == "http://user.qzone.qq.com/" + qq_qzone_name :
+            if driver.current_url == "http://user.qzone.qq.com/" + str(qq_qzone_name) :
                 login_flag = 0
             else:
                 print "url 不一致!"
