@@ -11,6 +11,8 @@ from main.views import main
 from qzone_friend.views import qzone_friend,qzone_friend_all,control_friend_thread
 from qzone_info.views import qzone_info,qzone_info_all,control_qzone_info_thread
 
+from show_message.views import show_tencent_wb_msg,show_qzone_info,show_tencent_wb_content,show_qzone_content,show_sina_info
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -39,6 +41,14 @@ urlpatterns = patterns('',
     url(r'^qzone_info_all/$',qzone_info_all),
     url(r'^control_qzone_info_thread/$',control_qzone_info_thread),
 
+
+    # url(r'^show_message',show_message),
+
+    url(r'^show_message/tencent_wb_msg/$',show_tencent_wb_msg),
+    url(r'^show_message/qzone_info/$',show_qzone_info),
+    url(r'^show_message/tencent_wb_content/$',show_tencent_wb_content),
+    url(r'^show_message/qzone_content/$',show_qzone_content),
+    url(r'^show_message/sina_info/$',show_sina_info),
 
 
 

@@ -14,7 +14,7 @@ import socket
 
 import socket
 #fcntl是posix接口，windows下没有的
-import fcntl
+# import fcntl
 import struct
 #禁止使用
 '''

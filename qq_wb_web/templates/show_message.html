@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+            <div class="col-md-12 column">
+                <ul class="nav nav-tabs">
+                    {% if tencent_wb_msg_flag %}
+                        <li class="active">
+                    {% else %}
+                         <li>
+                    {% endif %}
+                             <a href="/show_message/tencent_wb_msg">腾讯微博个人信息</a>
+                        </li>
+                    {% if tencent_wb_content_flag %}
+                        <li class="active">
+                    {% else %}
+                         <li>
+                    {% endif %}
+                         <a href="/show_message/tencent_wb_content">腾讯微博内容</a>
+                    </li>
+
+                    {% if tencent_qzone_info_flag %}
+                        <li class="active">
+                    {% else %}
+                         <li>
+                    {% endif %}
+                         <a href="/show_message/qzone_info">QQ空间个人信息</a>
+                    </li>
+                    {% if  tencent_qzone_content_flag %}
+                        <li class="active">
+                    {% else %}
+                         <li>
+                    {% endif %}
+                        <a href="/show_message/qzone_content">QQ空间说说</a>
+                    </li>
+
+                    {% if  sina_wb_info_flag %}
+                        <li class="active">
+                    {% else %}
+                         <li>
+                    {% endif %}
+                        <a href="/show_message/sina_info">新浪微博</a>
+                    </li>
+
+{#                    <li href="#">#}
+{#                         <a href="#">详细信息</a>#}
+{#                    </li>#}
+                </ul>
+            </div>
+    </div>
+
+
+    {% if tencent_qzone_info_flag %}
+                    <div class="page-header">
+						<h1>
+							QQ空间 <small>个人主页详细信息</small>
+						</h1>
+					</div>
+                    <table style="BORDER-COLLAPSE: collapse" cellSpacing=1 cellPadding=6 width="100%" height=273 class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>QQ</th>
+                                <th>空间名</th>
+                                <th>年龄</th>
+                                <th>生日</th>
+                                <th>现居地</th>
+                                <th>婚姻状况</th>
+                                <th>故乡</th>
+                                <th >公司</th>
+                                <th>职业</th>
+							</tr>
+						</thead>
+						<tbody>
+
+                            {% for msg in tencent_qzone_infos_list %}
+                                <tr class="success">
+                                    <td>{{ msg.qq }}</td>
+                                    <td>{{ msg.name }}</td>
+                                    <td>{{ msg.age }}</td>
+                                    <td>{{ msg.birthday }}</td>
+                                    <td>{{ msg.live_address }}</td>
+                                    <td>{{ msg.marriage }}</td>
+                                    <td>{{ msg.hometown_address }}</td>
+                                    <td>{{ msg.company }}</td>
+                                    <td>{{ msg.career }}</td>
+                                </tr>
+                            {% endfor %}
+						</tbody>
+					</table>
+    {% endif %}
+
+
+    {% if tencent_wb_msg_flag %}
+                    <div class="page-header">
+						<h1>
+							腾讯微博 <small>个人主页详细信息</small>
+						</h1>
+					</div>
+                    <table style="BORDER-COLLAPSE: collapse" cellSpacing=1 cellPadding=6 width="100%" height=273 class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>
+									腾讯微博ID
+								</th>
+                                <th>
+									详细信息(标签信息)
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+
+                            {% for msg in tencent_wb_msg_list %}
+                                <tr class="success">
+                                    <td>
+                                        {{ msg.wid }}
+                                    </td>
+                                    <td>
+                                        {{ msg.info }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+						</tbody>
+					</table>
+    {% endif %}
+
+
+    {% if tencent_wb_content_flag %}
+                    <div class="page-header">
+						<h1>
+							腾讯微博 <small>发布内容信息</small>
+						</h1>
+					</div>
+                    <table style="BORDER-COLLAPSE: collapse" cellSpacing=1 cellPadding=6 width="100%" height=273 class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>微博ID</th>
+                                <th>城市</th>
+                                <th>名字</th>
+
+                                <th>工作</th>
+                                <th>听众/收听/等级</th>
+                                <th>平台</th>
+                                <th>时间</th>
+                                <th>转发内容</th>
+                                <th>发表内容</th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+                            {% for msg in tencent_wb_content_list %}
+                                <tr class="success">
+
+                                    <td>{{ msg.id }}</td>
+                                    <td>{{ msg.city }}</td>
+                                    <td>{{ msg.user_name }}</td>
+                                    <td>{{ msg.user_work }}</td>
+
+                                    <td>{{ msg.follower }} /{{ msg.following }}/{{ msg.level }}</td>
+
+                                    <td>{{ msg.platform }}</td>
+
+                                    <td>{{ msg.date_time }}</td>
+
+                                    <td>{{ msg.tran_content }}</td>
+                                    <td>{{ msg.msg_content }}</td>
+                                </tr>
+                            {% endfor %}
+						</tbody>
+					</table>
+    {% endif %}
+
+
+    {% if tencent_qzone_content_flag %}
+                    <div class="page-header">
+						<h1>
+							QQ空间 <small>说说内容</small>
+						</h1>
+					</div>
+                    <table style="BORDER-COLLAPSE: collapse" cellSpacing=1 cellPadding=6 width="100%" height=273 class="table table-striped table-bordered">
+						<thead>
+							<tr>
+{#								<th></th>#}
+                                <th>QQ</th>
+                                <th>内容</th>
+                                <th>日期/平台</th>
+                                <th>点赞/评论</th>
+                                <th>转发内容</th>
+                                <th>评论</th>
+							</tr>
+						</thead>
+						<tbody>
+
+                            {% for msg in tencent_qzone_content_list %}
+                                <tr class="success">
+{#                                    <td>{{ msg.id }}</td>#}
+                                    <td>{{ msg.number }}</td>
+                                    <td>{{ msg.content }}</td>
+                                    <td>{{ msg.date_and_platform }}</td>
+                                    <td>{{ msg.op_of_reader }}</td>
+                                    <td>{{ msg.rt_contents }}</td>
+                                    <td>{{ msg.mood_comments_list }}</td>
+                                </tr>
+                            {% endfor %}
+						</tbody>
+					</table>
+    {% endif %}
+
+
+    {% if sina_wb_info_flag %}
+                    <div class="page-header">
+						<h1>
+							新浪微博 <small>个人标签信息</small>
+						</h1>
+					</div>
+                    <table style="BORDER-COLLAPSE: collapse" cellSpacing=1 cellPadding=6 width="100%" height=273 class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>微博ID</th>
+                                <th>个人主页</th>
+                                <th>微博名</th>
+
+                                <th>标签</th>
+{#                                <th>听众/收听/等级</th>#}
+                                <th>性别</th>
+                                <th>个人信息</th>
+
+                                <th>关注/粉丝/微博</th>
+                                <th>地址</th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+                            {% for msg in sina_wb_infos_list %}
+                                <tr class="success">
+
+                                    <td>{{ msg.id }}</td>
+                                    <td>{{ msg.person_href }}</td>
+                                    <td>{{ msg.person_name }}</td>
+                                    <td>{{ msg.labels }}</td>
+                                    <td>{{ msg.sex }}</td>
+
+{#                                    <td>{{ msg.follower }} /{{ msg.following }}/{{ msg.level }}</td>#}
+
+                                    <td>{{ msg.personInfo }}</td>
+
+                                    <td>{{ msg.personNum }}</td>
+
+                                    <td>{{ msg.addString }}</td>
+
+                                </tr>
+                            {% endfor %}
+						</tbody>
+					</table>
+    {% endif %}
+</div>
+</body>
+</html>

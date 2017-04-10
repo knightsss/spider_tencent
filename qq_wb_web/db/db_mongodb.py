@@ -18,6 +18,29 @@ def connect_mongodb():
     # conn = pymongo.Connection("192.168.15.111",27017)
     return conn
 
+def connect_mongodb_8_25():
+    #新版本连接方式
+    try:
+        conn = MongoClient("192.168.8.25", 27017)
+    except:
+        conn = 0
+        rtx('IP','mongodb连接异常')
+    #旧版本连接方式
+    # conn = pymongo.Connection("192.168.15.111",27017)
+    return conn
+
+def connect_mongodb_15_111():
+    #新版本连接方式
+    try:
+        conn = MongoClient("192.168.15.111", 27017)
+    except:
+        conn = 0
+        rtx('IP','mongodb连接异常')
+    #旧版本连接方式
+    # conn = pymongo.Connection("192.168.15.111",27017)
+    return conn
+
+
 #插入到qzone_info  monogo数据库
 def load_mongodb_qzone_info(conn,qq,info):
     db = conn.db_tx_qzone_info

@@ -141,6 +141,7 @@ def get_info(driver, url, log):
             info_list.append(age)
             info_list.append(birthday.encode('utf-8'))
             info_list.append(astro.encode('utf-8'))
+            #8
             info_list.append(live_address.encode('utf-8'))
             info_list.append(marriage.encode('utf-8'))
             info_list.append(blood.encode('utf-8'))
