@@ -16,7 +16,7 @@ import copy
 def get_message(mongodb_client,db_name,tab_name,count):
     db = mongodb_client[db_name]
     t_name = db[tab_name]
-    message_list = t_name.find().limit(count)
+    message_list = t_name.find().sort([("_id",-1)]).limit(count)
     return message_list
 
 #腾讯微博信息展示
@@ -26,7 +26,7 @@ def show_tencent_wb_msg(request):
     try:
         count = int(request.GET["count"])
     except:
-        count = 100
+        count = 1000
 
     # mongodb_client = MongoClient('192.168.15.111',27017)
 
@@ -56,7 +56,7 @@ def show_qzone_info(request):
     try:
         count = int(request.GET["count"])
     except:
-        count = 30
+        count = 200
 
     #定义连接、数据库名、表名
     mongodb_client = connect_mongodb_15_111()
@@ -122,16 +122,25 @@ def catchdetail(tencent_qzone_contents):
         messageDict = dict()
 
         #fill the message
-        messageDict['id'] = document['_id']
-        messageDict['city'] = document['city']
-        messageDict['messageCount'] = document['messageCount']
-        messageDict['level'] = document['level']
-        messageDict['UserId'] =document['UserId']
-        messageDict['follower'] = document['follower']
-        messageDict['summary'] = document['summary']
-        messageDict['user_work'] = document['user_work']
-        messageDict['following'] = document['following']
-        messageDict['user_name'] = document['user_name']
+        try:
+            messageDict['id'] = document['_id']
+            try:
+                messageDict['city'] = document['city']
+            except:
+                 messageDict['city'] = ""
+            try:
+                messageDict['messageCount'] = document['messageCount']
+            except:
+                print document
+            messageDict['level'] = document['level']
+            messageDict['UserId'] =document['UserId']
+            messageDict['follower'] = document['follower']
+            messageDict['summary'] = document['summary']
+            messageDict['user_work'] = document['user_work']
+            messageDict['following'] = document['following']
+            messageDict['user_name'] = document['user_name']
+        except:
+            continue
 
         #change the talkList
         for k in document['talkList']:
@@ -149,7 +158,7 @@ def show_tencent_wb_content(request):
     try:
         count = int(request.GET["count"])
     except:
-        count = 10
+        count = 30
     mongodb_client = connect_mongodb_8_25()
     db_name = "db_tx_wb_content"
     tab_name = "t_weibo_content"
@@ -187,7 +196,7 @@ def show_qzone_content(request):
     try:
         count = int(request.GET["count"])
     except:
-        count = 10
+        count = 30
     mongodb_client = connect_mongodb_8_25()
     db_name = "db_shuoshuo_content"
     tab_name = "t_shuoshuo_content"
@@ -220,7 +229,7 @@ def show_sina_info(request):
     try:
         count = int(request.GET["count"])
     except:
-        count = 20
+        count = 50
     mongodb_client = connect_mongodb_8_25()
     db_name = "db_sina_wb"
     tab_name = "t_youxi_labels"
