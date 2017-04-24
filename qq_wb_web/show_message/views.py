@@ -143,14 +143,17 @@ def catchdetail(tencent_qzone_contents):
             continue
 
         #change the talkList
-        for k in document['talkList']:
-            tempDict = messageDict
-            for key, cont in document['talkList'][k].items():
-                if type(cont) is list:
-                    tempDict[key] = json.dumps(cont,ensure_ascii=False,indent=2)
-                else:
-                    tempDict[key] = cont
-            messageLists.append(tempDict.copy())
+        try:
+            for k in document['talkList']:
+                tempDict = messageDict
+                for key, cont in document['talkList'][k].items():
+                    if type(cont) is list:
+                        tempDict[key] = json.dumps(cont,ensure_ascii=False,indent=2)
+                    else:
+                        tempDict[key] = cont
+                messageLists.append(tempDict.copy())
+        except:
+            print 'talkList is null'
 
     return messageLists
 
